@@ -1,1 +1,9 @@
-IMAGE_INSTALL:append = " hello openssh"
+IMAGE_INSTALL:append = " \
+    bash \
+    openssh \
+    linux-firmware \
+    wpa-supplicant \
+    dhcpcd \
+    iproute2 \
+    net-tools \
+"
