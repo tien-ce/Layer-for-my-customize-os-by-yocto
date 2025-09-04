@@ -1,19 +1,13 @@
-DESCRIPTION = "HELLO_FILE"
+DESCRIPTION = "Hello world program"
 LICENSE = "MIT"
-PR = "r0"
-SRC_URI = "file://hello.txt"
-SRC_URI += "file://dummy"
-LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = "file://dummy;md5=0"
-do_unpack() {
-    cp ${DL_DIR}/hello.txt ${WORKDIR}/hello.txt
-}
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+SRC_URI = "file://hello.c"
+S = "${WORKDIR}/build"
 
+do_compile() {
+    ${CC} ${C_FLAGS} ${LDFLAGS} ${UNPACKDIR}/hello.c -o ${S}/hello
+}
 do_install() {
-    install -d ${D}${datadir}/hello
-    install -m 0644 ${WORKDIR}/hello.txt ${D}${datadir}/hello/hello.txt
+    install -d ${D}${bindir}
+    install -m 0755 ${S}/hello ${D}${bindir}/
 }
-
-
