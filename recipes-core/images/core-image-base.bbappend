@@ -1,1 +1,1 @@
-IMAGE_INSTALL:append = " hello"
+IMAGE_INSTALL:append = " hello iw wpa-supplicant openssh linux-firmware"
